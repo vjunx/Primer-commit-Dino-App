@@ -96,7 +96,9 @@ function displaySpeciesSelection(data) {
 // Lista de nombres de tus imágenes de fondo (colócalas en /public/backgrounds/)
 const backgrounds = [
     'Ankylosaurus.png',
+    'Allosaurus.jpeg',
     'Ceratosaurus.png',
+    'Giganotosaurus.jpeg',
     'Deynonychus.png',
     'Iguanodon.jpeg',
     'Psittacosaurus.jpg',
@@ -104,16 +106,49 @@ const backgrounds = [
     'Triceratops.jpeg',
     'Utahraptor.png',
     'Velociraptor.png',
-    'Yutyrannus.jpg',
-    'Yutyrannus2.jpg',    
+    'Yutyrannus.png',
+    'Anchiornis.png',    
+    'Archaeopteryx.jpeg',
+    'Brachiosaurus.jpeg',
+    'Dilophosaurus.jpeg',
+    'Diplodocus.jpeg',
+    'Gallimimus.jpeg',
+    'Pachycephalosaurus.jpeg',
+    'Oviraptor.jpeg',
+    'Parasaurolophus.jpeg',
+    'Pterosaurio.jpeg',
+    'Quetzalcoatlus.jpeg',
+    'Yutyrannus2.png',
+    'Therizinosaurus.jpeg',
+    'Tyrannosaurus.png',
+    'Stegosaurus.jpeg',
+    'Concavenator.jpeg',
     // ...añade los que quieras
 ];
 
-// Cambia el fondo aleatoriamente
-function setRandomBackground() {
-    const bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-    document.body.style.backgroundImage = `url('/backgrounds/${bg}')`;
+let currentBgIndex = Math.floor(Math.random() * backgrounds.length);
+
+function setBackground(index) {
+    const bg = backgrounds[index];
+    const url = `/backgrounds/${bg}`;
+    document.body.style.backgroundImage = `url('${url}')`;
+    document.body.style.backgroundColor = '#222';
 }
+
+function setRandomBackground() {
+    currentBgIndex = Math.floor(Math.random() * backgrounds.length);
+    setBackground(currentBgIndex);
+}
+
+// Cambia el fondo al cargar la página
+window.addEventListener('DOMContentLoaded', () => {
+    setRandomBackground();
+    // Cambia el fondo cada 10 segundos
+    setInterval(() => {
+        currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+        setBackground(currentBgIndex);
+    }, 10000);
+});
 
 // Llama a esta función tras cada búsqueda exitosa
 // Ejemplo: después de mostrar resultados
