@@ -10,7 +10,7 @@ const { searchDinosaurByName } = require('./Buscadino');
 const app = express();
 const port = 3001;
 
-app.use(express.static('public'));
+app.use(express.static('Public'));
 
 app.get('/search', async (req, res) => {
     const { type, query, subcategory } = req.query;

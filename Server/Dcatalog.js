@@ -34,7 +34,8 @@ async function searchDinosaurByName(dinoName, dinoData) {
         if (searchResponse.status === 200) {
             const $ = cheerio.load(searchResponse.data);
             const name = $('h1').text();
-            const description = $('p').first().text();
+            const descriptionRaw = $('p').first().text();
+            const description = descriptionRaw.replace(/\[[^\]]*\]/g, '').trim();
             const period = description.match(/(Triásico|Jurásico|Cretácico)/i)?.[0] || 'Desconocido';
             const image = $('table.infobox img').first().attr('src') || 'No disponible';
             const imageUrl = image.startsWith('//') ? 'https:' + image : image;
@@ -132,7 +133,8 @@ async function scrapeWikiForDino(name, longitud, peso) {
         if (searchResponse.status === 200) {
             const $ = cheerio.load(searchResponse.data);
             const nombre = $('h1').text() || name;
-            const description = $('p').first().text() || "Sin descripción";
+            const descriptionRaw = $('p').first().text() || "Sin descripción";
+            const description = descriptionRaw.replace(/\[[^\]]*\]/g, '').trim();
             const period = description.match(/(Triásico|Jurásico|Cretácico)/i)?.[0] || 'Desconocido';
             let image = $('table.infobox img').first().attr('src') || '';
             if (image && image.startsWith('//')) image = 'https:' + image;
