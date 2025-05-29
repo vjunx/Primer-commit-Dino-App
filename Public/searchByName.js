@@ -1,5 +1,3 @@
-let speciesList = [];
-
 // Mostrar/ocultar campos según el tipo de búsqueda
 document.getElementById('searchType').addEventListener('change', function() {
     const type = this.value;
@@ -58,6 +56,7 @@ document.getElementById('dinoSelectionForm').addEventListener('submit', function
             document.getElementById('results').innerHTML += html;
         });
 });
+
 let speciesList = [];
 
 // Mostrar/ocultar campos según el tipo de búsqueda

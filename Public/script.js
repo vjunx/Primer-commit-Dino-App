@@ -72,7 +72,6 @@ document.getElementById('dinoSelectionForm').addEventListener('submit', function
         });
 });
 
-let speciesList = [];
 
 function displaySpeciesSelection(data) {
     setRandomBackground(); // Cambia el fondo cada vez que se muestra la lista
@@ -93,40 +92,8 @@ function displaySpeciesSelection(data) {
 }
 
 
-// Lista de nombres de tus imágenes de fondo (colócalas en /public/backgrounds/)
-const backgrounds = [
-    'Ankylosaurus.png',
-    'Allosaurus.jpeg',
-    'Ceratosaurus.png',
-    'Giganotosaurus.jpeg',
-    'Deynonychus.png',
-    'Iguanodon.jpeg',
-    'Psittacosaurus.jpg',
-    'Spinosaurus.png',
-    'Triceratops.jpeg',
-    'Utahraptor.png',
-    'Velociraptor.png',
-    'Yutyrannus.png',
-    'Anchiornis.png',    
-    'Archaeopteryx.jpeg',
-    'Brachiosaurus.jpeg',
-    'Dilophosaurus.jpeg',
-    'Diplodocus.jpeg',
-    'Gallimimus.jpeg',
-    'Pachycephalosaurus.jpeg',
-    'Oviraptor.jpeg',
-    'Parasaurolophus.jpeg',
-    'Pterosaurio.jpeg',
-    'Quetzalcoatlus.jpeg',
-    'Yutyrannus2.png',
-    'Therizinosaurus.jpeg',
-    'Tyrannosaurus.png',
-    'Stegosaurus.jpeg',
-    'Concavenator.jpeg',
-    // ...añade los que quieras
-];
 
-let currentBgIndex = Math.floor(Math.random() * backgrounds.length);
+// let currentBgIndex = Math.floor(Math.random() * backgrounds.length);
 
 function setBackground(index) {
     const bg = backgrounds[index];
