@@ -44,7 +44,30 @@
   </form>
   <div id="overlay"></div>
   <div id="results"></div>
+  <!-- Minijuego de Ahorcado -->
+<div id="hangman-game" style="display:none;">
+  <h2>¡Adivina el dinosaurio!</h2>
+  <div id="hangman-flex">
+    <div id="hangman-dino-col">
+      <img id="hangman-dino-img" src="" alt="Dinosaurio">
+    </div>
+    <div id="hangman-img-stack"></div>
+  </div>
+  <div id="hangman-word"></div>
+  <div id="hangman-letters"></div>
+  <input type="text" id="hangman-input" maxlength="1" autocomplete="off" style="text-transform:uppercase;">
+  <button id="hangman-try">Probar letra</button>
+  <button id="hangman-restart" style="display:none;">Jugar de nuevo</button>
+  <div id="hangman-message"></div>
+</div>
+<button id="show-hangman" style="margin:2em auto;display:block;">Jugar al Ahorcado</button>
+<div id="hangman-result-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; z-index:200; justify-content:center; align-items:center; background:rgba(255,255,255,0.95); flex-direction:column;">
+  <img id="hangman-result-img" src="" style="max-width:80vw; max-height:70vh; margin-bottom:1em;">
+  <div id="hangman-result-message" style="font-size:2em; font-weight:bold; color:#2d7a4a; margin-bottom:1em;"></div>
+  <button id="hangman-restart-overlay" style="background:#2d7a4a; color:#fff; border:none; border-radius:8px; padding:0.7em 1.5em; font-size:1.1em; cursor:pointer;">Jugar de nuevo</button>
+</div>
   <div id="watermark">Fuente: Wikipedia</div>
   <script src="script.js"></script>
+  <script src="hangman.js"></script>
 </body>
 </html>

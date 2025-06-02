@@ -146,3 +146,137 @@ button:hover {
         padding: 1em;
     }
 }
+/* Minijuego de Ahorcado */
+#hangman-game {
+    background: rgba(255,255,255,0.97);
+    border-radius: 18px;
+    padding: 2em 1em 1.5em 1em;
+    max-width: 95vw;
+    margin: 2em auto;
+    text-align: center;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    z-index: 10;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#hangman-img {
+    margin-bottom: 1em;
+    max-width: 180px;
+}
+#hangman-word {
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    margin: 1em 0;
+    font-family: monospace;
+}
+#hangman-letters {
+    margin: 1em 0;
+    color: #2d7a4a;
+    font-weight: bold;
+}
+#hangman-message {
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+#hangman-input {
+    font-size: 1.2em;
+    width: 2em;
+    text-align: center;
+    margin-right: 0.5em;
+}
+#hangman-try, #hangman-restart {
+    background: #2d7a4a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    transition: background 0.2s;
+}
+#hangman-try:hover, #hangman-restart:hover {
+    background: #1e5231;
+}
+#show-hangman {
+    background: #e6b800;
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1.5em;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-bottom: 2em;
+    transition: background 0.2s;
+}
+#show-hangman:hover {
+    background: #b38f00;
+}
+#hangman-flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2vw;
+    margin-bottom: 1.5em;
+    flex-wrap: wrap;
+}
+
+#hangman-dino-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#hangman-dino-img {
+    max-width: 38vw;
+    max-height: 65vh;
+    width: auto;
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    background: #fff;
+    display: block;
+}
+
+#hangman-img-stack {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    max-width: 45vw;
+    max-height: 65vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hangman-img-stack img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Resultado del Ahorcado */
+#hangman-result-overlay {
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.95);
+    flex-direction: column;
+}
+
+#hangman-result-img {
+    max-width: 90%;
+    max-height: 90%;
+}
