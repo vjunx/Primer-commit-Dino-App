@@ -6,7 +6,7 @@ const dinoWords = [
   { name: "BRACHIOSAURUS", image: "/backgrounds/Brachiosaurus.jpeg" },
   { name: "CARNOTAURUS", image: "/backgrounds/Carnotaurus.png" },
   { name: "CONCAVENATOR", image: "/backgrounds/Concavenator.jpeg" },
-  { name: "DEINONYCHUS", image: "/backgrounds/Deinonychus.jpeg" },
+  { name: "DEINONYCHUS", image: "/backgrounds/Deinonychus.png" },
   { name: "DILOPHOSAURUS", image: "/backgrounds/Dilophosaurus.jpeg" },
   { name: "DIPLODOCUS", image: "/backgrounds/Diplodocus.jpeg" },
   { name: "GALLIMIMUS", image: "/backgrounds/Gallimimus.jpeg" },
