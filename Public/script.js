@@ -138,6 +138,8 @@ function displayResults(dataArray) {
     });
 }
 
+let speciesList = [];
+
 document.getElementById('searchType').addEventListener('change', function() {
     const type = this.value;
     document.getElementById('nameInput').style.display = (type === 'nombre') ? '' : 'none';
@@ -211,8 +213,6 @@ document.getElementById('dinoSelectionForm').addEventListener('submit', function
             displayResults([data]);
         });
 });
-
-let speciesList = [];
 
 function displaySpeciesSelection(data) {
     setRandomBackground(); // Cambia el fondo cada vez que se muestra la lista

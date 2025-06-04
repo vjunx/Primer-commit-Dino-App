@@ -25,20 +25,12 @@ const dinoWords = [
   { name: "THERIZINOSAURUS", image: "/backgrounds/Therizinosaurus.jpeg" },
   { name: "UTAHRAPTOR", image: "/backgrounds/Utahraptor.png" },
   { name: "VELOCIRAPTOR", image: "/backgrounds/Velociraptor.png" },
-  { name: "YUTYRANNUS", image: "/backgrounds/Yutyrannus.jpeg" }
+  { name: "YUTYRANNUS", image: "/backgrounds/Yutyrannus.png" }
 ];
 
 const hangmanParts = [
-  "1-Base.png",
-  "2-Poste.png",
-  "3-Escuadra.png",
-  "4-Tronco.png",
-  "5-Cuerda.png",
-  "6-Patas.png",
-  "7-Ataduras.png",
-  "8-Cuerpo.png",
-  "9-Cabeza.png",
-  "10-Pico.png"
+  "1-Base.png", "2-Poste.png", "3-Escuadra.png", "4-Tronco.png", "5-Cuerda.png",
+  "6-Patas.png", "7-Ataduras.png", "8-Cuerpo.png", "9-Cabeza.png", "10-Pico.png"
 ];
 
 let current, word, guessed, fails, usedLetters;
@@ -46,7 +38,6 @@ let current, word, guessed, fails, usedLetters;
 function updateHangmanStack(fails) {
   const container = document.getElementById('hangman-img-stack');
   container.innerHTML = '';
-  // Dibuja las partes del ahorcado
   for (let i = 0; i < fails && i < hangmanParts.length; i++) {
     const img = document.createElement('img');
     img.src = `/hangman/${hangmanParts[i]}`;
@@ -65,11 +56,7 @@ function showEndImage(type) {
   const img = document.getElementById('hangman-result-img');
   const msg = document.getElementById('hangman-result-message');
   img.src = `/hangman/${type}.jpeg`;
-  if (type === 'winner') {
-    msg.textContent = "¡Ganaste!";
-  } else {
-    msg.textContent = `¡Perdiste! Era: ${word}`;
-  }
+  msg.textContent = (type === 'winner') ? "¡Ganaste!" : `¡Perdiste! Era: ${word}`;
   overlay.style.display = 'flex';
 }
 
@@ -80,7 +67,6 @@ function startHangman() {
   fails = 0;
   usedLetters = [];
   updateHangmanStack(fails);
-  // Muestra el dinosaurio en su columna
   document.getElementById('hangman-dino-img').src = current.image;
   document.getElementById('hangman-word').textContent = guessed.join(' ');
   document.getElementById('hangman-letters').textContent = '';
@@ -95,7 +81,7 @@ document.getElementById('hangman-try').onclick = function() {
   const input = document.getElementById('hangman-input');
   const letter = input.value.toUpperCase();
   input.value = '';
-  if (!letter.match(/[A-ZÑ]/)) return; // Solo letras válidas
+  if (!letter.match(/[A-ZÑ]/)) return;
 
   let found = false;
   for (let i = 0; i < word.length; i++) {
@@ -105,7 +91,6 @@ document.getElementById('hangman-try').onclick = function() {
     }
   }
 
-  // Si la letra ya fue usada, pero es incorrecta, cuenta como fallo
   if (!usedLetters.includes(letter)) {
     usedLetters.push(letter);
     document.getElementById('hangman-letters').textContent = usedLetters.join(', ');
@@ -114,7 +99,6 @@ document.getElementById('hangman-try').onclick = function() {
       updateHangmanStack(fails);
     }
   } else if (!found) {
-    // Si la letra ya fue usada y es incorrecta, suma fallo igualmente
     fails++;
     updateHangmanStack(fails);
   }
@@ -154,4 +138,9 @@ document.getElementById('hangman-input').addEventListener('keyup', function(e) {
 document.getElementById('hangman-restart-overlay').onclick = function() {
   document.getElementById('hangman-result-overlay').style.display = 'none';
   startHangman();
+};
+
+document.getElementById('hangman-close').onclick = function() {
+  document.getElementById('hangman-game').style.display = 'none';
+  document.getElementById('hangman-result-overlay').style.display = 'none'; // Oculta el overlay si está abierto
 };
