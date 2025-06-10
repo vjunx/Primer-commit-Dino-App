@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const xlsx = require('xlsx');
 const fs = require('fs');
 const path = require('path');
+const dinosaurData = require('./dinosaurData');
 
 // Function to read dinosaur data from Excel
 function readDinoDataFromExcel(filePath) {
@@ -101,17 +102,13 @@ async function searchDinosaurByName(dinoName, dinoData) {
 
 async function getDinosaurDetails(name) {
     console.log('Buscando detalles para:', name);
-    // Leer longitud y peso del Excel
+    // Leer longitud y peso desde dinosaurData.js
     let longitud = "Desconocido";
     let peso = "Desconocido";
-    const excelFilePath = 'C:\\Users\\CIJHU11\\Desktop\\Juan\\Otros\\APPs\\Seguridad\\BDD Filtrada.xlsx';
-    if (fs.existsSync(excelFilePath)) {
-        const dinoData = readDinoDataFromExcel(excelFilePath);
-        const normalized = normalizeDinoName(name);
-        if (dinoData[normalized]) {
-            longitud = dinoData[normalized].longitud || "Desconocido";
-            peso = dinoData[normalized].peso || "Desconocido";
-        }
+    const dinoInfo = getDinoInfoFromData(name);
+    if (dinoInfo) {
+        longitud = dinoInfo.LONGITUD || "Desconocido";
+        peso = dinoInfo.PESO || "Desconocido";
     }
 
     // Scraping de Wikipedia (especie completa)
@@ -261,9 +258,15 @@ async function getDidacticImages(dinoName, maxImages = 5) {
     return Array.from(images);
 }
 
+function getDinoInfoFromData(name) {
+    const normalized = name.trim().toLowerCase();
+    return dinosaurData.find(d =>
+        d.NOMBRE && d.NOMBRE.trim().toLowerCase() === normalized
+    );
+}
+
 // Exporta las funciones necesarias
 module.exports = {
-    readDinoDataFromExcel,
     searchDinosaurByName,
     getDinosaurDetails,
     searchDinosaurByPeriod,
